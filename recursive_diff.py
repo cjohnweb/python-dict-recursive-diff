@@ -26,6 +26,9 @@ def recursive_diff(data, temp_data, tabs = ""):
             # then load those into the new_data dict in thisa scope.
             # The new_data dict entries will always be un-initialized here in the logic
 
+            if k not in temp_data:
+                temp_data[k] = {}
+
             temp = recursive_diff(data[k], temp_data[k], tabs)  
 
             if temp:
