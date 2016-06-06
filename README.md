@@ -2,7 +2,7 @@
 Recursively compares 2 Python Dicts. returns dict. Maintains original structure of first dict, and returns a dict with only the keys and values that differ in the second dif.
 
 
-# Existing Dict of data
+    # Existing Dict of data
     b = {'thing1':'22','thing2': {'1': '?', '2': '+'}, 'thing3': {'users': '1', 'cpu': '.1', "note":"You should not see the thing3 dict at all"}, "notInFirstDict":"You should not see this"}
 
 
