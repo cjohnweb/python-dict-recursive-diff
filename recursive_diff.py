@@ -9,26 +9,22 @@ def recursive_diff(data, temp_data, tabs = ""):
         tabs = tabs + "\t\t"
     
     new_data = {}
-    # 1st time through: hostname, timestamp, services, networking, etc
     
-    # 2nd time through: atd:+-, apache2:+-   |   lip: x.x.x.x , wip: x.x.x.x
-
-    for k in data.keys(): # hostname, timestamp, services, networking, etc
+    for k in data.keys():
 
         if debug:
             print tabs+"data["+k+"] = ", data[k]
             print tabs+"temp_data["+k+"] = ", temp_data[k]
             print "\n"
 
-        if type(data[k]) == type({}): # services, networking
+        if type(data[k]) == type({}):
             if debug:
                 print tabs+"\tdata["+k+"] == dict::"
                 print tabs+"\tcomparing....\n"
 
-            # Pass {'atd': '+', 'acpid': '+'} and {'users': '1', 'uptime': '36 days, 21:54:45.560000'}
-            # Return only objects that have changed {'atd': '-') or {'users': '2'}
-            # then load those into the new_data dict.
-            # The new_data dict entries will always be un-initialized in this logic
+            # Return only objects that have changed
+            # then load those into the new_data dict in thisa scope.
+            # The new_data dict entries will always be un-initialized here in the logic
 
             temp = recursive_diff(data[k], temp_data[k], tabs)  
 
@@ -48,7 +44,7 @@ def recursive_diff(data, temp_data, tabs = ""):
             #else:
             #    print tabs+"\t\tNo new dict data returned"
 
-        else:  # hostname, timestamp, then {'atd': '+', 'acpid': '+'} and {'users': '1', 'uptime': '36 days, 21:54:45.560000'}
+        else:
             if debug:
                 print tabs+"\tdata["+k+"] != dict"
             
