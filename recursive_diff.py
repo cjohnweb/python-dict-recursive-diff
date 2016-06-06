@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # encoding=utf8
 
-def recursive_diff(data, temp_data, tabs = ""):
+def recursive_diff(data, temp_data):
     new_data = {}
     for k in data.keys():
         if type(data[k]) == type({}):
             if k not in temp_data:
                 temp_data[k] = {}
-            temp = recursive_diff(data[k], temp_data[k], tabs)  
+            temp = recursive_diff(data[k], temp_data[k])  
             if temp:
                 new_data[k] = {}
                 new_data[k] = temp
